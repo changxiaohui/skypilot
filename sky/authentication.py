@@ -449,3 +449,4 @@ def setup_kubernetes_authentication(config: Dict[str, Any]) -> Dict[str, Any]:
     config['auth']['ssh_proxy_command'] = ssh_proxy_cmd
 
     return config
+

@@ -1,6 +1,6 @@
 import sky
 
-CLOUDS_TO_TEST = ['AWS', 'GCP', 'IBM', 'Azure', 'Lambda', 'OCI', 'scp']
+CLOUDS_TO_TEST = ['AWS', 'GCP', 'IBM', 'Azure', 'Lambda', 'OCI', 'scp', 'vsphere']
 
 
 def test_list_accelerators():

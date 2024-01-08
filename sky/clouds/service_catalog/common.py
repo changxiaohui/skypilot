@@ -487,6 +487,10 @@ def list_accelerators_impl(
         'SpotPrice',
         'Region',
     ]].dropna(subset=['AcceleratorName']).drop_duplicates()
+    # In case of the df is empty, it should return an empty array
+    if df.empty:
+        return {}
+
     if name_filter is not None:
         df = df[df['AcceleratorName'].str.contains(name_filter,
                                                    case=case_sensitive,

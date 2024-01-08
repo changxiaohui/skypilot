@@ -82,6 +82,7 @@ SCP = clouds.SCP
 Local = clouds.Local
 Kubernetes = clouds.Kubernetes
 OCI = clouds.OCI
+Vsphere = clouds.Vsphere
 optimize = Optimizer.optimize
 
 __all__ = [
@@ -95,6 +96,7 @@ __all__ = [
     'Local',
     'OCI',
     'SCP',
+    'Vsphere',
     'Optimizer',
     'OptimizeTarget',
     'backends',

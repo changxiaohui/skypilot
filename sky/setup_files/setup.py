@@ -208,6 +208,7 @@ aws_dependencies = [
     'botocore>=1.29.10',
     'boto3>=1.26.1',
 ]
+
 extras_require: Dict[str, List[str]] = {
     'aws': aws_dependencies,
     # TODO(zongheng): azure-cli is huge and takes a long time to install.
@@ -234,6 +235,9 @@ extras_require: Dict[str, List[str]] = {
     'oci': ['oci'] + local_ray,
     'kubernetes': ['kubernetes'] + local_ray,
     'remote': remote,
+    'vsphere': ['pyvmomi==8.0.1.0.2',
+                'vsphere-automation-sdk @ git+https://github.com/vmware/vsphere-automation-sdk-python.git@v8.0.1.0'
+                ] + local_ray,
 }
 
 extras_require['all'] = sum(extras_require.values(), [])

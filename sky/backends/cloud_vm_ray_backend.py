@@ -83,6 +83,7 @@ _NODES_LAUNCHING_PROGRESS_TIMEOUT = {
     clouds.Local: 90,
     clouds.OCI: 300,
     clouds.Kubernetes: 300,
+    clouds.Vsphere: 240,
 }
 
 # Time gap between retries after failing to provision in all possible places.
@@ -148,6 +149,7 @@ def _get_cluster_config_template(cloud):
         clouds.SCP: 'scp-ray.yml.j2',
         clouds.OCI: 'oci-ray.yml.j2',
         clouds.Kubernetes: 'kubernetes-ray.yml.j2',
+        clouds.Vsphere: 'vsphere-ray.yml.j2',
     }
     return cloud_to_template[type(cloud)]
 
@@ -1587,8 +1589,9 @@ class RetryingVmProvisioner(object):
             global_user_state.set_owner_identity_for_cluster(
                 cluster_name, cloud_user_identity)
 
+
             if (to_provision.cloud.PROVISIONER_VERSION ==
-                    clouds.ProvisionerVersion.SKYPILOT):
+                   clouds.ProvisionerVersion.SKYPILOT):
                 # TODO (suquark): Gradually move the other clouds to
                 #  the new provisioner once they are ready.
                 assert to_provision.region == region.name, (to_provision,
